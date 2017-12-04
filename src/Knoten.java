@@ -13,8 +13,8 @@ public class Knoten {
 	@SuppressWarnings("unchecked")
 	public Knoten(char data) {
 		_data = data;
-		_nachbarn = new Pos[10];
-		_distanzen = new int[10];
+		_nachbarn = new Pos[0];
+		_distanzen = new int[0];
 	}
 	
 	public Pos<Knoten>[] gibNachbarn() {
@@ -25,14 +25,15 @@ public class Knoten {
 		return _data;
 	}
 	
+	public int[] gibDistanzen() {
+		return _distanzen;
+	}
+	
 	@SuppressWarnings("unchecked")
 	public void fuegeNachbarnHinzu(Pos<Knoten> pos, int distanz) {
-		_distanzen[_index] = distanz;
-		_nachbarn[_index] = pos;
-		_index++;
 		if (_index == _nachbarn.length) {
-			Pos<Knoten>[] neueNachbarn = new Pos[2*_nachbarn.length];
-			int[] neueDistanzen = new int[2*_nachbarn.length];
+			Pos<Knoten>[] neueNachbarn = new Pos[_nachbarn.length+1];
+			int[] neueDistanzen = new int[_nachbarn.length+1];
 			for (int i=0; i<_nachbarn.length; i++) {
 				neueNachbarn[i] = _nachbarn[i];
 				neueDistanzen[i] = _distanzen[i];
@@ -40,6 +41,9 @@ public class Knoten {
 			_nachbarn = neueNachbarn;
 			_distanzen = neueDistanzen;
 		}
+		_distanzen[_index] = distanz;
+		_nachbarn[_index] = pos;
+		_index++;
 	}
 }
 

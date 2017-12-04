@@ -25,4 +25,26 @@ public class AdjListGraph extends Graph<Knoten> {
 		posEnde.gibPos().fuegeNachbarnHinzu(posAnfang, distanz);
 	}
 
+	@Override
+	public int gibDistanz(Pos<Knoten> posAnfang, Pos<Knoten> posEnde) {
+		Pos<Knoten>[] nachbarn = posAnfang.gibPos().gibNachbarn();
+		int distanzIndex = -1;
+		for (int i=0; i < nachbarn.length; i++) {
+			if (nachbarn[i] == posEnde) {
+				distanzIndex = i;
+				break;
+			}
+		}
+		if (distanzIndex == -1) {
+			throw new IllegalArgumentException("Knoten nicht verbunden");
+		} else {
+			return posAnfang.gibPos().gibDistanzen()[distanzIndex];
+		}
+	}
+
+	@Override
+	public char gibData(Pos<Knoten> pos) {
+		return pos.gibPos().gibData();
+	}
+
 }
