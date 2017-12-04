@@ -1,5 +1,9 @@
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import org.junit.Test;
 
 public class DijkstraTest {
@@ -43,4 +47,28 @@ public class DijkstraTest {
 		_graph.verbinde(pos5,pos6,4);
 		return new Pos[] {pos0, pos1, pos2, pos3, pos4, pos5, pos6}; //gebe start pos zurueck
 	}
+	
+	@Test
+	public void mehrereZufallsTests() {
+		zufallsTest(10);
+		zufallsTest(100);
+		zufallsTest(1000);
+		zufallsTest(10000);
+		zufallsTest(100000);	
+	}
+	
+	private void zufallsTest(int anzahlKnoten) {
+		List<Integer> randomNumbers = new ArrayList<>();
+		for (int i=0; i<anzahlKnoten; i++) {
+			randomNumbers.add(i);
+		}
+		Collections.shuffle(randomNumbers);
+		
+		Pos[] positionen = new Pos[anzahlKnoten];
+		for (int i=0; i < anzahlKnoten; i++) {
+			positionen[i] = _graph.fuegeEin(randomNumbers.get(0));
+		}
+	}
+	
+	
 }
