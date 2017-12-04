@@ -12,11 +12,13 @@ public class Pos {
 	Pos (Knoten k) {
 		_knoten = k;
 		_index = -1;
+		_isValid = true;
 	}
 	
 	Pos (int i) {
 		_knoten = null;
 		_index = i;
+		_isValid = true;
 	}
 	
 	public boolean isValid() {
@@ -27,8 +29,8 @@ public class Pos {
 		return _knoten;
 	}
 	
-	Knoten gibIndex() {
-		return _knoten;
+	int gibIndex() {
+		return _index;
 	}
 	
 	
@@ -58,5 +60,19 @@ public class Pos {
 		}
 		return false;
 	}
+	
+	@Override
+	public int hashCode()
+	{
+		if(_knoten == null)
+		{
+			return _index;
+		}
+		else
+		{
+			return _knoten.gibData();
+		}
+	}
+	
 	
 }
