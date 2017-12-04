@@ -29,7 +29,7 @@ public abstract class Graph<posType> {
 		verbinde(pos2,pos3,12);
 		verbinde(pos2,pos6,1);
 		
-		verbinde(pos3,pos4,3);
+		verbinde(pos3,pos4,4);
 		
 		verbinde(pos4,pos5,3);
 		verbinde(pos4,pos6,8);
