@@ -73,7 +73,7 @@ public class Dijkstra {
 		Map.Entry<Pos, Integer> aktuellerWeg = null;
 		for (Map.Entry<Pos, Integer> eintrag : aktuelleWege.entrySet()) {
 			if (aktuellerWeg == null) aktuellerWeg = eintrag;
-			if (aktuellerWeg.getValue() < eintrag.getValue()) aktuellerWeg = eintrag;
+			if (aktuellerWeg.getValue() > eintrag.getValue()) aktuellerWeg = eintrag;
 		}
 		return aktuellerWeg.getKey();
 	}
