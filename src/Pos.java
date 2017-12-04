@@ -4,28 +4,59 @@
  * @author Frederic Dlugi & Maximilian Mang
  *
  */
-public class Pos<E> {
-	E _Pos;
+public class Pos {
+	Knoten _knoten;
+	int _index;
 	boolean _isValid;
 	
-	public Pos (E o) {
-		if (o instanceof Knoten | o instanceof Integer) {
-			_Pos = o;
-			_isValid = true;
-		} else {
-			throw new IllegalArgumentException("Position not integer or container");
-		}
+	Pos (Knoten k) {
+		_knoten = k;
+		_index = -1;
+	}
+	
+	Pos (int i) {
+		_knoten = null;
+		_index = i;
 	}
 	
 	public boolean isValid() {
 		return _isValid;
 	}
 	
-	public E gibPos() {
-		return _Pos;
+	Knoten gibKnoten() {
+		return _knoten;
 	}
+	
+	Knoten gibIndex() {
+		return _knoten;
+	}
+	
 	
 	public void setValid(boolean state) {
 		_isValid = state;
 	}
+	
+	@Override
+	public boolean equals(Object obj)
+	{
+		if(obj instanceof Pos)
+		{
+			Pos p = (Pos) obj;
+			if(p._isValid != _isValid)
+			{
+				return false;
+			}
+			if(p._index != _index)
+			{
+				return false;
+			}
+			if(p._knoten != _knoten)
+			{
+				return false;
+			}
+			return true;
+		}
+		return false;
+	}
+	
 }

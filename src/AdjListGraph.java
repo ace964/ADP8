@@ -1,50 +1,54 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 /**
  * AdjListGraph
  * Eine Listen-Implementation fuer ein Graphensystem an dem der Dykstra-Algorithmus angewendet werden kann.
  * @author Frederic Dlugi & Maximilian Mang
  *
  */
-public class AdjListGraph extends Graph<Knoten> {
+public class AdjListGraph implements Graph {
+	
+	List<Knoten> _knoten;
 	
 	public AdjListGraph() {
-		
+		_knoten = new ArrayList<>();
 	}
 	
 	@Override
-	public Pos<Knoten>[] gibNachbarn(Pos<Knoten> pos) {
-		return pos.gibPos().gibNachbarn();
+	public Pos[] gibNachbarn(Pos pos) {
+		Set<Knoten> nachbarSet = pos.gibKnoten().gibNachbarn();
+		Pos[] nachbarn = new Pos[nachbarSet.size()];
+		int i = 0;
+		for(Knoten k : nachbarSet)
+		{
+			nachbarn[i] = new Pos(k);
+			i++;
+		}
+		return nachbarn;
 	}
 	
-	public Pos<Knoten> fuegeEin(char data) {
-		return new Pos<Knoten>(new Knoten(data));
+	public Pos fuegeEin(char data) {
+		Knoten k = new Knoten(data);
+		_knoten.add(k);
+		return new Pos(k);
 	}
 
 	@Override
-	public void verbinde(Pos<Knoten> posAnfang, Pos<Knoten> posEnde, int distanz) {
-		posAnfang.gibPos().fuegeNachbarnHinzu(posEnde, distanz);
-		posEnde.gibPos().fuegeNachbarnHinzu(posAnfang, distanz);
+	public void verbinde(Pos posAnfang, Pos posEnde, int distanz) {
+		posAnfang.gibKnoten().fuegeNachbarnHinzu(posEnde.gibKnoten(), distanz);
+		posEnde.gibKnoten().fuegeNachbarnHinzu(posAnfang.gibKnoten(), distanz);
 	}
 
 	@Override
-	public int gibDistanz(Pos<Knoten> posAnfang, Pos<Knoten> posEnde) {
-		Pos<Knoten>[] nachbarn = posAnfang.gibPos().gibNachbarn();
-		int distanzIndex = -1;
-		for (int i=0; i < nachbarn.length; i++) {
-			if (nachbarn[i] == posEnde) {
-				distanzIndex = i;
-				break;
-			}
-		}
-		if (distanzIndex == -1) {
-			throw new IllegalArgumentException("Knoten nicht verbunden");
-		} else {
-			return posAnfang.gibPos().gibDistanzen()[distanzIndex];
-		}
+	public int gibDistanz(Pos posAnfang, Pos posEnde) {
+		return posAnfang.gibKnoten().gibDistanz(posEnde.gibKnoten());
 	}
 
 	@Override
-	public char gibData(Pos<Knoten> pos) {
-		return pos.gibPos().gibData();
+	public char gibData(Pos pos) {
+		return pos.gibKnoten().gibData();
 	}
 
 }

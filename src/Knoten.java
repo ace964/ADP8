@@ -1,3 +1,7 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
 /**
  * Knoten
  * Eine Containerklasse für ein Datum 
@@ -6,44 +10,35 @@
  */
 public class Knoten {
 	private char _data;
-	private Pos<Knoten>[] _nachbarn;
-	private int[] _distanzen;
-	int _index = 0;
+	private Map<Knoten, Integer> _nachbarn;
 	
-	@SuppressWarnings("unchecked")
 	public Knoten(char data) {
 		_data = data;
-		_nachbarn = new Pos[0];
-		_distanzen = new int[0];
+		_nachbarn = new HashMap<>();
 	}
 	
-	public Pos<Knoten>[] gibNachbarn() {
-		return _nachbarn;
+	public Set<Knoten> gibNachbarn() {
+		return _nachbarn.keySet();
 	}
 	
 	public char gibData() {
 		return _data;
 	}
 	
-	public int[] gibDistanzen() {
-		return _distanzen;
+	public int gibDistanz(Knoten k)
+	{
+		if(_nachbarn.containsKey(k))
+		{
+			return _nachbarn.get(k);
+		}
+		else
+		{
+			throw new IllegalArgumentException("Knoten ist kein Nachbar");
+		}
 	}
 	
-	@SuppressWarnings("unchecked")
-	public void fuegeNachbarnHinzu(Pos<Knoten> pos, int distanz) {
-		if (_index == _nachbarn.length) {
-			Pos<Knoten>[] neueNachbarn = new Pos[_nachbarn.length+1];
-			int[] neueDistanzen = new int[_nachbarn.length+1];
-			for (int i=0; i<_nachbarn.length; i++) {
-				neueNachbarn[i] = _nachbarn[i];
-				neueDistanzen[i] = _distanzen[i];
-			}
-			_nachbarn = neueNachbarn;
-			_distanzen = neueDistanzen;
-		}
-		_distanzen[_index] = distanz;
-		_nachbarn[_index] = pos;
-		_index++;
+	public void fuegeNachbarnHinzu(Knoten pos, int distanz) {
+		_nachbarn.put(pos, distanz);
 	}
 }
 

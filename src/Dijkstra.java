@@ -60,7 +60,6 @@ public class Dijkstra {
 		}
 	}
 	
-	@SuppressWarnings("rawtypes")
 	private Pos gibDichtestePos(Map<Pos, Weg> aktuelleWege) {
 		Map.Entry<Pos, Weg> aktuellerWeg = null;
 		for (Map.Entry<Pos, Weg> eintrag : aktuelleWege.entrySet()) {
