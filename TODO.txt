@@ -1,0 +1,8 @@
+-Wrapper (Weg) -> (Pos, Integer)
+-Dijkstra soll List<Weg> zurückgeben
+-Pos soll equals und hashcode überschreiben
+-Keine Gerics in Pos
+-Graph soll Interface werden
+-Main methode zu Main class
+-UnitTest Klasse für tests -> Weg equals implementieren
+-ListGraph Implementation Eine Liste von Pos halten.
