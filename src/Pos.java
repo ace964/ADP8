@@ -9,7 +9,7 @@ public class Pos<E> {
 	boolean _isValid;
 	
 	public Pos (E o) {
-		if (o instanceof Knoten | o instanceof Character) {
+		if (o instanceof Knoten | o instanceof Integer) {
 			_Pos = o;
 			_isValid = true;
 		} else {

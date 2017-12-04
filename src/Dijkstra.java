@@ -12,6 +12,10 @@ public class Dijkstra {
 		AdjListGraph listenGraph = new AdjListGraph();
 		Pos<Knoten>[] alleKnoten = listenGraph.erstelleTestGraph();
 		zeigeKuerzesteWegeNach(alleKnoten[6], listenGraph);
+		
+		//AdjMatrixGraph matrixGraph = new AdjMatrixGraph();
+		//Pos<Character>[] alleKnoten2 = matrixGraph.erstelleTestGraph();
+		//zeigeKuerzesteWegeNach(alleKnoten2[6], matrixGraph);
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -41,16 +45,20 @@ public class Dijkstra {
 			for (Pos nachbarPos : graphInstanz.gibNachbarn(dichtester)) {
 				if (! kuerzesteWege.containsKey(nachbarPos)) { //nachbar ist ziel oder schon bearbeitet
 					if (!aktuelleWege.containsKey(nachbarPos)) { //nachbar ist noch nicht erfasst
+					
 						int distanzUeberKuerzesten = graphInstanz.gibDistanz(nachbarPos, dichtester) + dichtesteDistanz;
 						aktuelleWege.put(nachbarPos, distanzUeberKuerzesten) ;
 						wegUeber.put(nachbarPos, dichtester) ;
+					
 					} else { //nachbar ist erfasst und wird ueberprueft
+						
 						int distanzUeberKuerzesten = graphInstanz.gibDistanz(nachbarPos, dichtester) + dichtesteDistanz;
 						if (distanzUeberKuerzesten < aktuelleWege.get(nachbarPos)) {
 							aktuelleWege.remove(nachbarPos);
 							wegUeber.remove(nachbarPos);
 							aktuelleWege.put(nachbarPos, distanzUeberKuerzesten);
 							wegUeber.put(nachbarPos, dichtester);
+						
 						}
 					}
 				}
@@ -61,6 +69,7 @@ public class Dijkstra {
 			wegUeber.remove(dichtester);
 		}
 		
+		//Ergebnisausgabe
 		for (Map.Entry<Pos, Integer> eintrag : kuerzesteWege.entrySet()) {
 			char ausgangspunkt = graphInstanz.gibData(eintrag.getKey());
 			char ueber = graphInstanz.gibData(kuerzesterWegUeber.get(eintrag.getKey()));

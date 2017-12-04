@@ -9,8 +9,6 @@ public abstract class Graph<posType> {
 		
 	}
 	
-	abstract Pos<posType>[] gibNachbarn(Pos<posType> pos);
-	
 	@SuppressWarnings("unchecked")
 	public Pos<posType>[] erstelleTestGraph() {
 		Pos<posType> pos0 = fuegeEin('A');
@@ -39,6 +37,9 @@ public abstract class Graph<posType> {
 		verbinde(pos5,pos6,4);
 		return new Pos[] {pos0, pos1, pos2, pos3, pos4, pos5, pos6}; //gebe start pos zurueck
 	}
+
+	
+	public abstract Pos<posType>[] gibNachbarn(Pos<posType> pos);
 	
 	public abstract  Pos<posType> fuegeEin(char data);
 	
