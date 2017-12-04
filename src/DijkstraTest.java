@@ -7,6 +7,10 @@ import java.util.List;
 import org.junit.Test;
 
 public class DijkstraTest {
+	//ZUFALLS PARAMETER
+	int grad= 10;
+	int maxDistanz = 10;
+	//
 	
 	Graph _graph;
 	Dijkstra _dijkstra;
@@ -49,12 +53,12 @@ public class DijkstraTest {
 	}
 	
 	@Test
-	public void mehrereZufallsTests() {
+	public void mehrereZufallsTest() {
 		zufallsTest(10);
-		zufallsTest(100);
-		zufallsTest(1000);
-		zufallsTest(10000);
-		zufallsTest(100000);	
+		//zufallsTest(100);
+		//zufallsTest(1000);
+		//zufallsTest(10000);
+		//zufallsTest(100000);	
 	}
 	
 	private void zufallsTest(int anzahlKnoten) {
@@ -66,9 +70,19 @@ public class DijkstraTest {
 		
 		Pos[] positionen = new Pos[anzahlKnoten];
 		for (int i=0; i < anzahlKnoten; i++) {
-			positionen[i] = _graph.fuegeEin(randomNumbers.get(0));
+			positionen[i] = _graph.fuegeEin(randomNumbers.get(i));
 		}
+		
+		for (int i=0; i<anzahlKnoten; i++) {
+			for (int j=0; j< grad; j++ ) {
+				int randomPos = (int)(Math.random()*anzahlKnoten);
+				int randomDistanz = (int)((Math.random()*maxDistanz)+1);
+				_graph.verbinde(positionen[i],positionen[randomPos],randomDistanz);
+				//System.out.println(randomPos + " vebunden mit " + i);
+			}
+		}
+		int ziel = (int)(Math.random()*anzahlKnoten);
+		_dijkstra.zeigeKuerzesteWegeNach(positionen[ziel], _graph);
+		System.out.println("Ziel ist : " + ziel);
 	}
-	
-	
 }
