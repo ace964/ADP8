@@ -29,7 +29,7 @@ public class AdjListGraph implements Graph {
 		return nachbarn;
 	}
 	
-	public Pos fuegeEin(char data) {
+	public Pos fuegeEin(int data) {
 		Knoten k = new Knoten(data);
 		_knoten.add(k);
 		return new Pos(k);
@@ -47,7 +47,7 @@ public class AdjListGraph implements Graph {
 	}
 
 	@Override
-	public char gibData(Pos pos) {
+	public int gibData(Pos pos) {
 		return pos.gibKnoten().gibData();
 	}
 

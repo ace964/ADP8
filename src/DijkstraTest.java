@@ -11,7 +11,7 @@ public class DijkstraTest {
 	Graph _graph;
 	Dijkstra _dijkstra;
 	public DijkstraTest() {
-		_graph = (Graph) new AdjListGraph();
+		_graph = new AdjMatrixGraph();
 		_dijkstra = new Dijkstra();
 	}
 	@Test

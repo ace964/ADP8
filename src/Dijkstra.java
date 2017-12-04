@@ -54,8 +54,8 @@ public class Dijkstra {
 		
 		//Ergebnisausgabe
 		for (Map.Entry<Pos, Weg> eintrag : kuerzesteWege.entrySet()) {
-			char ausgangspunkt = graphInstanz.gibData(eintrag.getKey());
-			char ueber = graphInstanz.gibData(eintrag.getValue().gibZiel());
+			int ausgangspunkt = graphInstanz.gibData(eintrag.getKey());
+			int ueber = graphInstanz.gibData(eintrag.getValue().gibZiel());
 			System.out.println(ausgangspunkt + ": " + eintrag.getValue().gibDistanz() + " ueber: " + ueber);
 		}
 	}

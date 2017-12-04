@@ -9,10 +9,10 @@ import java.util.Set;
  *
  */
 public class Knoten {
-	private char _data;
+	private int _data;
 	private Map<Knoten, Integer> _nachbarn;
 	
-	public Knoten(char data) {
+	public Knoten(int data) {
 		_data = data;
 		_nachbarn = new HashMap<>();
 	}
@@ -21,7 +21,7 @@ public class Knoten {
 		return _nachbarn.keySet();
 	}
 	
-	public char gibData() {
+	public int gibData() {
 		return _data;
 	}
 	
