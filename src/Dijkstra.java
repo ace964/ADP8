@@ -8,18 +8,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Dijkstra {
-	public static void main(String[] args) {
-		AdjListGraph listenGraph = new AdjListGraph();
-		Pos<Knoten>[] alleKnoten = listenGraph.erstelleTestGraph();
-		zeigeKuerzesteWegeNach(alleKnoten[6], listenGraph);
+	public void Dijkstra() {
 		
-		//AdjMatrixGraph matrixGraph = new AdjMatrixGraph();
-		//Pos<Character>[] alleKnoten2 = matrixGraph.erstelleTestGraph();
-		//zeigeKuerzesteWegeNach(alleKnoten2[6], matrixGraph);
 	}
 	
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public static void zeigeKuerzesteWegeNach(Pos zielPos, Graph graphInstanz) {
+	public void zeigeKuerzesteWegeNach(Pos zielPos, Graph graphInstanz) {
 		Map<Pos, Weg> kuerzesteWege = new HashMap<Pos, Weg>();
 		
 		
@@ -68,7 +61,7 @@ public class Dijkstra {
 	}
 	
 	@SuppressWarnings("rawtypes")
-	private static Pos gibDichtestePos(Map<Pos, Weg> aktuelleWege) {
+	private Pos gibDichtestePos(Map<Pos, Weg> aktuelleWege) {
 		Map.Entry<Pos, Weg> aktuellerWeg = null;
 		for (Map.Entry<Pos, Weg> eintrag : aktuelleWege.entrySet()) {
 			if (aktuellerWeg == null) aktuellerWeg = eintrag;

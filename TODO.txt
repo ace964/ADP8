@@ -1,5 +1,4 @@
--Wrapper (Weg) -> (Pos, Integer)
--Dijkstra soll List<Weg> zurückgeben
+﻿-Dijkstra soll List<Weg> zurückgeben
 -Pos soll equals und hashcode überschreiben
 -Keine Gerics in Pos
 -Graph soll Interface werden
