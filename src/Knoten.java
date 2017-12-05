@@ -33,7 +33,7 @@ public class Knoten {
 		}
 		else
 		{
-			throw new IllegalArgumentException("Knoten ist kein Nachbar");
+			return -1;
 		}
 	}
 	

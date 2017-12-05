@@ -5,6 +5,7 @@
  *
  */
 public interface Graph {
+	
 	public abstract Pos[] gibNachbarn(Pos pos);
 	
 	public abstract  Pos fuegeEin(int integer);

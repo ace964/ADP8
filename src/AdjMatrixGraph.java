@@ -72,6 +72,9 @@ public class AdjMatrixGraph implements Graph {
 
 	@Override
 	public int gibDistanz(Pos posAnfang, Pos posEnde) {
+		if(_matrix[posAnfang.gibIndex()][posEnde.gibIndex()] == 0)
+			return -1;
+		
 		return _matrix[posAnfang.gibIndex()][posEnde.gibIndex()];
 	}
 
