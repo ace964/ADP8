@@ -1,3 +1,4 @@
+package graphen;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -10,12 +11,16 @@ import java.util.List;
  */
 public class AdjMatrixGraph implements Graph {
 	private int[] _data;
-	private int[][] _matrix;
+	private byte[][] _matrix;
 	private int _size;
 	
 	public AdjMatrixGraph() {
-		_matrix = new int[15][15];
-		_data = new int[15];
+		this(15);
+	}
+	
+	public AdjMatrixGraph(int size) {
+		_matrix = new byte[size][size];
+		_data = new int[size];
 		_size = 0;
 	}
 	
@@ -44,7 +49,7 @@ public class AdjMatrixGraph implements Graph {
 	
 	private void vergroessereMatrix()
 	{
-		int[][] newMatrix = new int[_matrix.length*2][];
+		byte[][] newMatrix = new byte[_matrix.length*2][];
 		for(int i = 0; i < _matrix.length; i++)
 		{
 			if(_matrix[i] != null)
@@ -58,16 +63,16 @@ public class AdjMatrixGraph implements Graph {
 	public void verbinde(Pos posAnfang, Pos posEnde, int distanz) {
 		if(_matrix[posAnfang.gibIndex()] == null)
 		{
-			_matrix[posAnfang.gibIndex()] = new int[_matrix.length];
+			_matrix[posAnfang.gibIndex()] = new byte[_matrix.length];
 		}
 		
 		if(_matrix[posEnde.gibIndex()] == null)
 		{
-			_matrix[posEnde.gibIndex()] = new int[_matrix.length];
+			_matrix[posEnde.gibIndex()] = new byte[_matrix.length];
 		}
 		
-		_matrix[posAnfang.gibIndex()][posEnde.gibIndex()] = distanz;
-		_matrix[posEnde.gibIndex()][posAnfang.gibIndex()] = distanz;
+		_matrix[posAnfang.gibIndex()][posEnde.gibIndex()] = (byte) distanz;
+		_matrix[posEnde.gibIndex()][posAnfang.gibIndex()] = (byte) distanz;
 	}
 
 	@Override

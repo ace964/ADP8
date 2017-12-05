@@ -1,3 +1,4 @@
+package graphen;
 /**
  * Pos
  * Position von Daten 
@@ -5,9 +6,9 @@
  *
  */
 public class Pos {
-	Knoten _knoten;
-	int _index;
-	boolean _isValid;
+	private Knoten _knoten;
+	private int _index;
+	private boolean _isValid;
 	
 	Pos (Knoten k) {
 		_knoten = k;

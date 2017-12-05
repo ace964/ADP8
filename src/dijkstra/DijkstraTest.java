@@ -1,5 +1,4 @@
-import static org.junit.Assert.*;
-
+package dijkstra;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -7,11 +6,15 @@ import java.util.Random;
 
 import org.junit.Test;
 
+import graphen.AdjListGraph;
+import graphen.Graph;
+import graphen.Pos;
+
 public class DijkstraTest
 {
 	// ZUFALLS PARAMETER
-	final int GRAD = 10;
-	final int MAX_DISTANZ = 10;
+	private final int GRAD = 4;
+	private final int MAX_DISTANZ = 10;
 	//
 
 	Graph _graph;
@@ -19,7 +22,7 @@ public class DijkstraTest
 
 	public DijkstraTest()
 	{
-		_graph = new AdjMatrixGraph();
+		_graph = new AdjListGraph();
 		_dijkstra = new Dijkstra();
 	}
 
@@ -69,7 +72,7 @@ public class DijkstraTest
 		// zufallsTest(100);
 		// zufallsTest(1000);
 		// zufallsTest(10000);
-		// zufallsTest(100000);
+		 zufallsTest(100000);
 	}
 
 	private void zufallsTest(int anzahlKnoten)

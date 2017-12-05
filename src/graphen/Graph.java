@@ -1,3 +1,5 @@
+package graphen;
+
 /**
  * Graph
  * Eine Graphensystem an dem der Dykstra-Algorithmus angewendet werden kann.

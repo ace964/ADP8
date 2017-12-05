@@ -1,3 +1,4 @@
+package graphen;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -10,7 +11,7 @@ import java.util.Set;
  */
 public class AdjListGraph implements Graph {
 	
-	List<Knoten> _knoten;
+	private List<Knoten> _knoten;
 	
 	public AdjListGraph() {
 		_knoten = new ArrayList<>();

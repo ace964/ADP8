@@ -1,3 +1,6 @@
+package dijkstra;
+import graphen.Pos;
+
 /**
  * Weg
  * Ein weg der eine Distanz und ein Ziel hat.

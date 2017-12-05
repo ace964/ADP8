@@ -1,3 +1,4 @@
+package dijkstra;
 /**
  * Dykstra
  * Ein Dykstra-Algorithmus, der ein Graphensystem benutzt
@@ -6,6 +7,9 @@
  */
 import java.util.HashMap;
 import java.util.Map;
+
+import graphen.Graph;
+import graphen.Pos;
 
 public class Dijkstra {
 	public void Dijkstra() {
