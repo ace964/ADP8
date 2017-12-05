@@ -12,7 +12,7 @@ import java.util.List;
 public class AdjMatrixGraph implements Graph {
 	private int[] _data;
 	private byte[][] _matrix;
-	private int _size;
+	protected int _size;
 	
 	public AdjMatrixGraph() {
 		this(15);
@@ -86,6 +86,23 @@ public class AdjMatrixGraph implements Graph {
 	@Override
 	public int gibData(Pos pos) {
 		return _data[pos.gibIndex()];
+	}
+
+	@Override
+	public int gibAnzahlKnoten()
+	{
+		return _size;
+	}
+
+	@Override
+	public List<Pos> gibKnoten()
+	{
+		List<Pos> list = new ArrayList<>();
+		for(int i = 0; i < _size; i++)
+		{
+			list.add(new Pos(i));
+		}
+		return list;
 	}
 
 }

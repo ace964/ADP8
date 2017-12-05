@@ -52,4 +52,22 @@ public class AdjListGraph implements Graph {
 		return pos.gibKnoten().gibData();
 	}
 
+	@Override
+	public int gibAnzahlKnoten()
+	{
+		return _knoten.size();
+	}
+
+	@Override
+	public List<Pos> gibKnoten()
+	{
+		List<Pos> list = new ArrayList<Pos>();
+		
+		for(Knoten k : _knoten)
+		{
+			list.add(new Pos(k));
+		}
+		return list;
+	}
+	
 }

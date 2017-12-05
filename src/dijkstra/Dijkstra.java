@@ -12,9 +12,6 @@ import graphen.Graph;
 import graphen.Pos;
 
 public class Dijkstra {
-	public void Dijkstra() {
-		
-	}
 	
 	public void zeigeKuerzesteWegeNach(Pos zielPos, Graph graphInstanz) {
 		Map<Pos, Weg> kuerzesteWege = new HashMap<Pos, Weg>();
@@ -57,11 +54,12 @@ public class Dijkstra {
 		}
 		
 		//Ergebnisausgabe
-		for (Map.Entry<Pos, Weg> eintrag : kuerzesteWege.entrySet()) {
+		
+		/*for (Map.Entry<Pos, Weg> eintrag : kuerzesteWege.entrySet()) {
 			int ausgangspunkt = graphInstanz.gibData(eintrag.getKey());
 			int ueber = graphInstanz.gibData(eintrag.getValue().gibZiel());
 			System.out.println(ausgangspunkt + ": " + eintrag.getValue().gibDistanz() + " ueber: " + ueber);
-		}
+		}*/
 	}
 	
 	private Pos gibDichtestePos(Map<Pos, Weg> aktuelleWege) {
